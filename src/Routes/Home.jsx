@@ -1,14 +1,18 @@
 import React from 'react'
 import Card from '../Components/Card'
+import'../Components/card.css'
+import { useCharStates } from '../Components/Context/context'
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
+
+const {state, theme} = useCharStates ()
+
   return (
-    <main className="" >
+    <main className={state.theme == 'light' ? "light" : "dark"}>
       <h1>Home</h1>
       <div className='card-grid'>
-        {/* Aqui deberias renderizar las cards */}
+      {state.dentists.map(dentists => <Card key={dentists.id} name={dentists.name} username={dentists.username} id={dentists.id}/>)}
       </div>
     </main>
   )

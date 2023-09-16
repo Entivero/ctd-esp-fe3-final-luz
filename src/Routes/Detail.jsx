@@ -1,17 +1,46 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useCharStates } from '../Components/Context/context';
+import doctor from '../images/doctor.jpg';
+import './detail.css'
 
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Detail = () => {
- 
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+  const {state, dispatch} = useCharStates()
+  const params = useParams()
+  const urlID = `https://jsonplaceholder.typicode.com/users/${params.id}`
+
+  useEffect(() => {
+    axios(urlID).then(response => {
+      console.log(response);
+      dispatch ({type: 'ONE_DENTIST', payload: response.data})
+    })
+  })
+
+
 
   return (
     <>
-      <h1>Detail Dentist id </h1>
-      {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-      {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
+      <div className={state.theme === 'light' ? 'light main' : 'dark main'}>
+      <div className="detail-container">
+        <h1>Detail Dentist id</h1>
+        <div className="dentist-info">
+          <img className="dentist-image" src={doctor} alt="doctor" />
+          <div className="dentist-details">
+            <h2>
+              DR: {state.dentistDetail.username}, {state.dentistDetail.name}
+            </h2>
+            <h2>Detalles:</h2>
+            <p>Telefono: {state.dentistDetail.phone}</p>
+            <p>Correo Electronico: {state.dentistDetail.email}</p>
+            <p>WebSite: {state.dentistDetail.website}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     </>
   )
 }

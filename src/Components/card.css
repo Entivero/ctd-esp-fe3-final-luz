@@ -1,0 +1,52 @@
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  .card-grid{
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 20px;
+    max-width: calc(50% - 45px); 
+    flex: 1;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .card-username {
+    color: #666;
+    margin-top: 8px;
+  }
+  
+  .botonFavorito {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .botonFavorito:hover {
+    background-color: #0056b3;
+  }
